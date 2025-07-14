@@ -241,7 +241,7 @@ elif st.session_state.quiz_completed:
             cols = st.columns(len(q_data["prompt_images"]))
             for j, img_desc in enumerate(q_data["prompt_images"]):
                 with cols[j]:
-                    st.image(create_abstract_image(img_desc), caption=f"Prompt {j+1}", use_column_width=True)
+                    st.image(create_abstract_image(img_desc), caption=f"Prompt {j+1}", use_container_width=True)
 
             user_answer = st.session_state.answers.get(i, "Not answered")
             correct_answer = q_data["correct_answer"]
@@ -290,7 +290,7 @@ else:
         cols = st.columns(len(question["prompt_images"]))
         for j, img_desc in enumerate(question["prompt_images"]):
             with cols[j]:
-                st.image(create_abstract_image(img_desc), caption=f"Figure {j+1}", use_column_width=True)
+                st.image(create_abstract_image(img_desc), caption=f"Figure {j+1}", use_container_width=True)
 
         st.markdown("---")
 
