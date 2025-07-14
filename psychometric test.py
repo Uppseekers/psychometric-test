@@ -224,7 +224,7 @@ if not st.session_state.quiz_started:
     if st.button("Start Quiz"):
         st.session_state.quiz_started = True
         st.session_state.start_time = time.time()
-        st.experimental_rerun() # Rerun to immediately show the first question
+        st.rerun() # Rerun to immediately show the first question
 
 elif st.session_state.quiz_completed:
     st.success("🎉 Quiz Completed!")
@@ -260,7 +260,7 @@ elif st.session_state.quiz_completed:
         # Reset all session state variables
         for key in st.session_state.keys():
             del st.session_state[key]
-        st.experimental_rerun()
+        st.rerun()
 
 else:
     current_time = time.time()
@@ -276,7 +276,7 @@ else:
     if remaining_time <= 0:
         st.session_state.quiz_completed = True
         st.warning("Time's up! The quiz has ended.")
-        st.experimental_rerun() # Trigger a rerun to show completion message
+        st.rerun() # Trigger a rerun to show completion message
 
     # --- Display Current Question ---
     if st.session_state.current_question_idx < NUM_QUESTIONS:
@@ -316,7 +316,7 @@ else:
             if st.button("Previous", disabled=(q_idx == 0)):
                 st.session_state.answers[q_idx] = selected_option # Save current answer
                 st.session_state.current_question_idx -= 1
-                st.experimental_rerun()
+                st.rerun()
 
         with col2:
             if st.button("Next"):
@@ -330,8 +330,8 @@ else:
                     st.session_state.current_question_idx += 1
                 else:
                     st.session_state.quiz_completed = True
-                st.experimental_rerun()
+                st.rerun()
     else:
         st.session_state.quiz_completed = True
-        st.experimental_rerun()
+        st.rerun()
 
